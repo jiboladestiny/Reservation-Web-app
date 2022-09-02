@@ -1,0 +1,26 @@
+.navbar {
+  background-color: transparent !important;
+  // height: 60px;
+
+  overflow: hidden;
+
+
+
+  .navbar-brand {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  ul {
+    li {
+      .btn {
+        color: black !important;
+        background: white !important;
+        cursor: pointer;
+        border-radius: 3px !important;
+      }
+    }
+  }
+}
