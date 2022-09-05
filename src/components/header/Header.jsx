@@ -57,28 +57,32 @@ const Header = ({ type }) => {
   };
 
   return (
-    <div className="header">
+    <div className={type === "list" ? "header listMode" : "header"}>
       <div
-        className={
-          type === "list"
-            ? "headerContainer listMode container"
-            : "headerContainer container"
-        }
+        // className={
+        //   type === "list"
+        //     ? "headerContainer listMode container"
+        //     : "headerContainer container"
+        // }
+        className="headerContainer container"
       >
         <Navbar />
 
         <div className="headerCont">
           <div>
+            {type === "list" && (
+              <h2 className="headerTitle text-center">Fresh, quite and peaceful</h2>
+            )}
             {type !== "list" && (
               <>
-                <div className="row justify-content-sm-center">
+                <div className="row headerWrapper">
                   <div className="col-md-8 col-10">
                     <h1 className="headerTitle">Fresh, quite and peaceful</h1>
                     <p className="headerDesc">
                       Get rewarded for your travels – unlock instant savings of
                       10% or more with a free Lamabooking account
                     </p>
-                    <div className="col-md-12 text-center button-cont">
+                    <div className="col-md-12 button-cont">
                       <button className="headerBtn">Explore</button>
                     </div>
                   </div>
@@ -188,7 +192,7 @@ const Header = ({ type }) => {
                     )}
                   </div>
                   <div className="headerSearchButton">
-                    <button className="headerBtn" onClick={handleSearch}>
+                    <button className="headerBtn2" onClick={handleSearch}>
                       Search
                     </button>
                   </div>
