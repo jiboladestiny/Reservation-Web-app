@@ -20,6 +20,10 @@
   top: 10px;
   height: max-content;
 
+  i {
+    display: none;
+  }
+
   .lsTitle {
     font-size: 20px;
     color: #555;
@@ -40,8 +44,10 @@
       height: 35px;
       background-color: white;
       border: none;
+      outline: none;
       border-radius: 5px;
       padding: 5px;
+      font-size: 14px;
     }
 
     & > span {
@@ -58,20 +64,27 @@
     .lsOptions {
       // padding: 10px 10px;
       // background-color: red;
+      -webkit-transition: opacity 1s 0s ease-in;
+      -moz-transition: opacity 1s 0s ease-in;
+      -o-transition: opacity 1s 0s ease-in;
+      transition: opacity 1s 0s ease-in;
 
       .lsOptionItem {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-        // color: #;
         font-size: 12px;
+
+        .lsOptionInput {
+          width: 50px;
+          border: none;
+          outline: none;
+          padding: 4px;
+          border-radius: 5px;
+        }
       }
     }
   }
-}
-
-.lsOptionInput {
-  width: 50px;
 }
 
 .listSearch > button {
@@ -86,9 +99,64 @@
 }
 
 .listResult {
-  background-color: white;
   height: 90vh;
   border-radius: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+
+// &::-webkit-scrollbar {
+//   width: 7px;
+//   cursor: pointer;
+// }
+
+
+// &::-webkit-scrollbar-track {
+//   background: #f1f1f1; 
+//   border-radius: 50px;
+// }
+ 
+// &::-webkit-scrollbar-thumb {
+//   background: #888; 
+// }
+
+// &::-webkit-scrollbar-thumb:hover {
+//   background: #555; 
+// }
+
+&::-webkit-scrollbar {
+  width: 7px;
+}
+// &::-webkit-scrollbar-button {
+//   width: 0px;
+//   height: 0px;
+// }
+&::-webkit-scrollbar-thumb {
+  // background: #e1e1e1;
+   background: #888; 
+  border: 23px none #ffffff;
+  border-radius: 50px;
+}
+&::-webkit-scrollbar-thumb:hover {
+   background: #555; 
+}
+&::-webkit-scrollbar-thumb:active {
+   background: #555; 
+}
+&::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+&::-webkit-scrollbar-track:hover {
+  background: #f1f1f1; 
+}
+&::-webkit-scrollbar-track:active {
+ background: #f1f1f1; 
+}
+&::-webkit-scrollbar-corner {
+  background: transparent;
+}
 }
 
 .loader {
@@ -110,5 +178,34 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 991.98px) {
+  .listSearch {
+    height: 190px;
+    overflow-y: hidden;
+    position: relative;
+
+    &.showFilter {
+      height: auto;
+    }
+    i {
+      display: block;
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 30px;
+      background-color: white;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: black;
+        color: white;
+        transition: all 2s;
+        cursor: pointer;
+      }
+    }
   }
 }

@@ -90,7 +90,12 @@
 
 .header.listMode {
   margin-bottom: 3rem;
-  height: 30vh;
+  height: 27vh;
+    background-position:top;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(103, 71, 54)),
+    url("https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   .headerContainer {
     .headerCont {
       height: 30vh;

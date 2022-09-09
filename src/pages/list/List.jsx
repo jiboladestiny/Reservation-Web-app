@@ -8,19 +8,23 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import Empty from "./Empty";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
+  const [destination, setDestination] = useState(location.state?.destination);
+  const [dates, setDates] = useState(location.state?.dates);
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(location.state?.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const [filter, setFilter] = useState(false);
 
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
+
+
 
   const handleClick = () => {
     reFetch();
@@ -30,16 +34,25 @@ const List = () => {
     <div>
       <Header type="list" />
       <div className="listContainer container">
-        <h2 className="mb-3">Choose from wide range of reservaion</h2>
-        <div className="listWrapper row">
-          <div className="col-md-3">
-            <div className="listSearch">
+        <h3 className="mb-4">Choose from wide range of reservaion</h3>
+        <div className="listWrapper row gy-5">
+          <div className="col-lg-3 col-md-12">
+            <div className={filter ? "listSearch showFilter" : "listSearch"}>
+              <i
+                class="bx bx-filter"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Filter"
+                onClick={() => {setFilter(!filter)}}
+              ></i>
               <h1 className="lsTitle">Search</h1>
               <div className="lsItem">
                 <label>Destination</label>
                 <input
                   placeholder={destination}
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => {
+                    setDestination(e.target.value);
+                  }}
                   type="text"
                 />
               </div>
@@ -111,20 +124,20 @@ const List = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={handleClick}>Search</button>
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-12 col-lg-8">
             <div className="listResult">
+              {data.length === 0 && !loading && <Empty />}
               {loading ? (
                 // "loading"
                 <div className="loader"></div>
               ) : (
-                <>
+                <div className="row gy-4">
                   {data.map((item) => (
                     <SearchItem item={item} key={item._id} />
                   ))}
-                </>
+                </div>
               )}
             </div>
           </div>

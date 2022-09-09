@@ -5,6 +5,7 @@ const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [images, setImage] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,6 +13,15 @@ const useFetch = (url) => {
       try {
         const res = await axios.get(url);
         setData(res.data);
+         const images = res.data?.photos.map((item) => {
+           return {
+             original: item,
+             thumbnail: item,
+           };
+         });
+
+         setImage(images)
+        
       } catch (err) {
         setError(err);
       }
@@ -31,7 +41,7 @@ const useFetch = (url) => {
     setLoading(false);
   };
 
-  return { data, loading, error, reFetch };
+  return { data, loading, error,images, reFetch };
 };
 
 export default useFetch;
