@@ -19,12 +19,10 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   const [filter, setFilter] = useState(false);
-
+console.log(destination)
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
-
-
 
   const handleClick = () => {
     reFetch();
@@ -32,6 +30,7 @@ const List = () => {
 
   return (
     <div>
+    
       <Header type="list" />
       <div className="listContainer container">
         <h3 className="mb-4">Choose from wide range of reservaion</h3>
@@ -43,7 +42,9 @@ const List = () => {
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 title="Filter"
-                onClick={() => {setFilter(!filter)}}
+                onClick={() => {
+                  setFilter(!filter);
+                }}
               ></i>
               <h1 className="lsTitle">Search</h1>
               <div className="lsItem">
@@ -58,12 +59,15 @@ const List = () => {
               </div>
               <div className="lsItem">
                 <label>Check-in Date</label>
-                <span onClick={() => setOpenDate(!openDate)}>
-                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                    dates[0].endDate,
-                    "MM/dd/yyyy"
-                  )}`}
-                </span>
+                {dates && (
+                  <span onClick={() => setOpenDate(!openDate)}>
+                    {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                      dates[0].endDate,
+                      "MM/dd/yyyy"
+                    )}`}
+                  </span>
+                )}
+
                 {openDate && (
                   <DateRange
                     onChange={(item) => setDates([item.selection])}
@@ -101,7 +105,7 @@ const List = () => {
                       type="number"
                       min={1}
                       className="lsOptionInput"
-                      placeholder={options.adult}
+                      placeholder={options?.adult}
                     />
                   </div>
                   <div className="lsOptionItem">
@@ -110,7 +114,7 @@ const List = () => {
                       type="number"
                       min={0}
                       className="lsOptionInput"
-                      placeholder={options.children}
+                      placeholder={options?.children}
                     />
                   </div>
                   <div className="lsOptionItem">
@@ -119,7 +123,7 @@ const List = () => {
                       type="number"
                       min={1}
                       className="lsOptionInput"
-                      placeholder={options.room}
+                      placeholder={options?.room}
                     />
                   </div>
                 </div>

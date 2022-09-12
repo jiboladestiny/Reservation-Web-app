@@ -24,26 +24,12 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [photos, setPhotos] = useState([
-    {
-      original: "https://picsum.photos/id/1018/1000/600/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
-    },
-  ]);
 
-  const {images, data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
- 
- 
+  const { images, data, loading, error, reFetch } = useFetch(
+    `/hotels/find/${id}`
+  );
 
-//  console.log(images)
+   console.log(data)
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -109,18 +95,6 @@ const Hotel = () => {
             <div className="row mt-5">
               <div className="col-lg-8">
                 <ImageGallery items={images} />
-                <div className="hotelImages">
-                  {data.photos?.map((photo, i) => (
-                    <div className="hotelImgWrapper" key={i}>
-                      <img
-                        onClick={() => handleOpen(i)}
-                        src={photo}
-                        alt=""
-                        className="hotelImg"
-                      />
-                    </div>
-                  ))}
-                </div>
               </div>
 
               <div className="col-lg-4">
@@ -128,21 +102,21 @@ const Hotel = () => {
                   <h1 className="hotelTitle">{data.title}</h1>
                   <p className="hotelDesc">{data.desc}</p>
                 </div>
-              </div>
-            </div>
 
-            <div className="hotelDetails">
-              <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
-                <span>
-                  Located in the real heart of Krakow, this property has an
-                  excellent location score of 9.8!
-                </span>
-                <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
-                  nights)
-                </h2>
-                <button onClick={handleClick}>Reserve or Book Now!</button>
+                <div className="hotelDetails mt-5">
+                  <div className="hotelDetailsPrice">
+                    <h1>Perfect for a {days}-night stay!</h1>
+                    <span>
+                      Located in the real heart of {data.city}, this property
+                      has an excellent location score of {data.rating}
+                    </span>
+                    <h2>
+                      <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                      nights)
+                    </h2>
+                    <button onClick={handleClick}>Reserve or Book Now!</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

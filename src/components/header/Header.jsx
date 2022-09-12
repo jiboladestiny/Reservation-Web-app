@@ -53,7 +53,6 @@ const Header = ({ type }) => {
 
     console.log(dates);
     navigate("/hotels", { state: { destination, dates, options } });
-    // console.log(options)
   };
 
   return (
@@ -71,7 +70,9 @@ const Header = ({ type }) => {
         <div className="headerCont">
           <div>
             {type === "list" && (
-              <h2 className="headerTitle text-center">Fresh, quite and peaceful</h2>
+              <h2 className="headerTitle text-center">
+                Fresh, quite and peaceful
+              </h2>
             )}
             {type !== "list" && (
               <>
@@ -83,7 +84,18 @@ const Header = ({ type }) => {
                       10% or more with a free Lamabooking account
                     </p>
                     <div className="col-md-12 button-cont">
-                      <button className="headerBtn">Explore</button>
+                      <button
+                        className="headerBtn"
+                        onClick={() => {
+                          const section = document.querySelector("#list");
+                          section.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                        }}
+                      >
+                        Explore
+                      </button>
                     </div>
                   </div>
                 </div>

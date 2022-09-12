@@ -1,12 +1,24 @@
 import { createContext, useReducer } from "react";
 
+// Specific date
+const date = new Date();
+
+// Add ten days to specified date
+date.setDate(date.getDate() + 10);
+
 const INITIAL_STATE = {
   city: undefined,
-  dates: [],
+  dates: [
+    {
+      startDate: new Date(),
+      endDate: date,
+      key: "selection",
+    },
+  ],
   options: {
-    adult: undefined,
-    children: undefined,
-    room: undefined,
+    adult: 1,
+    children: 0,
+    room: 1,
   },
 };
 
