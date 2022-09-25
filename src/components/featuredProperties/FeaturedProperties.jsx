@@ -3,19 +3,29 @@ import "./featuredProperties.css";
 import { useNavigate } from "react-router-dom";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
+  const { data, loading } = useFetch("/hotels?featured=true&limit=4");
   const navigate = useNavigate();
+
   return (
     <div className="res container mt-5">
       <h1 className="homeTitle mb-4">Top Homes</h1>
-
-      <div className="fp row">
+     
+      <div className="fp row gy-4">
         {loading ? (
-          "Loading"
+          <div className="lds-roller mx-auto">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         ) : (
           <>
             {data.map((item) => (
-              <div className="col-md-3">
+              <div className="col-md-6 col-lg-3">
                 <div
                   onClick={() => {
                     navigate(`/hotels/${item._id}`);

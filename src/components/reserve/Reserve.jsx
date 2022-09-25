@@ -1,17 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-
-import "./reserve.css";
+import "./reserve.scss";
 import useFetch from "../../hooks/useFetch";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import success from "./success-svgrepo-com.svg";
 const Reserve = ({ setOpen, hotelId }) => {
+  const notify = () => toast.error("Reservation is empty !");
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
+  const { data, loading } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
+  const [modal, setModal] = useState(false);
+  const [random, setRandom] = useState();
+  useEffect(()=>{
+    setRandom( Math.random().toString(36).substring(2, 12))
+  },[modal])
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -52,56 +59,126 @@ const Reserve = ({ setOpen, hotelId }) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    try {
-      await Promise.all(
-        selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
-          return res.data;
-        })
-      );
-      setOpen(false);
-      navigate("/");
-    } catch (err) {}
+    if (selectedRooms.length !== 0) {
+      try {
+        await Promise.all(
+          selectedRooms.map((roomId) => {
+            const res = axios.put(`/rooms/availability/${roomId}`, {
+              dates: alldates,
+            });
+            return res.data;
+          })
+        );
+        setModal(true);
+        // setOpen(false);
+        // navigate("/");
+      } catch (err) {}
+    } else {
+      notify();
+    }
   };
+
+
+
   return (
     <div className="reserve">
+      <ToastContainer />
       <div className="rContainer">
-        <FontAwesomeIcon
-          icon={faCircleXmark}
-          className="rClose"
-          onClick={() => setOpen(false)}
-        />
-        <span>Select your rooms:</span>
-        {data.map((item) => (
-          <div className="rItem" key={item._id}>
-            <div className="rItemInfo">
-              <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
-              <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
+        {modal === false && (
+          <FontAwesomeIcon
+            icon={faCircleXmark}
+            className="rClose"
+            onClick={() => setOpen(false)}
+          />
+        )}
+        {modal === false && (
+          <div>
+            <span>Select your rooms:</span>
+            <br />
+            {loading ? (
+              <div className="d-flex justify-content-center">
+                <div class="lds-hourglass"></div>
               </div>
-              <div className="rPrice">{item.price}</div>
-            </div>
-            <div className="rSelectRooms">
-              {item.roomNumbers.map((roomNumber) => (
-                <div className="room">
-                  <label>{roomNumber.number}</label>
-                  <input
-                    type="checkbox"
-                    value={roomNumber._id}
-                    onChange={handleSelect}
-                    disabled={!isAvailable(roomNumber)}
-                  />
+            ) : (
+              data.map((item) => (
+                <div className="rItem" key={item._id}>
+                  <div className="rItemInfo">
+                    <div className="rTitle">{item.title}</div>
+                    <div className="rDesc">{item.desc}</div>
+                    <div className="rMax">
+                      Max people: <b>{item.maxPeople}</b>
+                    </div>
+                    <div className="rPrice">{item.price}</div>
+                  </div>
+                  <div className="rSelectRooms">
+                    {item.roomNumbers.map((roomNumber) => (
+                      <div className="room">
+                        <label>{roomNumber.number}</label>
+                        <input
+                          type="checkbox"
+                          value={roomNumber._id}
+                          onChange={handleSelect}
+                          disabled={!isAvailable(roomNumber)}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
+              ))
+            )}
+
+            <button onClick={handleClick} className="rButton">
+              Reserve Now!
+            </button>
+          </div>
+        )}
+        {modal === true && (
+          <div className="feedback">
+            <div className="d-flex justify-content-center">
+              <img src={success} width="57" height="57" alt="" />
+            </div>
+            <p>Rerservation booked succesfully</p>
+            <p className="id">
+              <span className="book">Booking id</span>: <span>{random}</span>
+              <i
+                onClick={() => {
+                  navigator.clipboard.writeText(random);
+                }}
+                class="bx ms-2 bx-copy"
+              ></i>
+            </p>
+            <div class="button-cont gap-2 d-flex justify-content-md-center">
+              <button
+                onClick={() => {
+                  navigate("/hotels", {
+                    state: {
+                      destination: "",
+                      dates,
+                      options: {
+                        adult: 1,
+                        children: 0,
+                        room: 1,
+                      },
+                    },
+                  });
+                }}
+                class="btn explore btn-md btn-primary me-md-2"
+                type="button"
+              >
+                Explore
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+                class="btn home btn-md btn-primary"
+                type="button"
+              >
+                Home page
+              </button>
             </div>
           </div>
-        ))}
-        <button onClick={handleClick} className="rButton">
-          Reserve Now!
-        </button>
+        )}
       </div>
     </div>
   );

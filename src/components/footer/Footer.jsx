@@ -1,4 +1,5 @@
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -6,32 +7,32 @@ const Footer = () => {
       <footer class="py-3 mt-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item">
-            <a href="#" class="nav-link px-2">
+            <Link to="/" class="nav-link px-2">
               Home
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link px-2">
+            <Link to="/" href="#" class="nav-link px-2">
               Places
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link px-2">
+            <Link to="/" class="nav-link px-2">
               Pricing
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link px-2">
+            <Link to="/" class="nav-link px-2">
               FAQs
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link px-2">
+            <Link to="/" class="nav-link px-2">
               About
-            </a>
+            </Link>
           </li>
         </ul>
-        <p class="text-center text-muted">&copy; 2021 Company, Inc</p>
+        <p class="text-center text-muted">&copy; 2022 Reserva, Inc</p>
       </footer>
     </div>
   );

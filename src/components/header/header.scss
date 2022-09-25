@@ -1,4 +1,4 @@
-@import 'react-notifications/lib/notifications.css';
+@import "react-notifications/lib/notifications.css";
 .header {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(103, 71, 54, 0.4)),
     url("./image/heroimage-1.jpeg");
@@ -61,10 +61,17 @@
           background-color: whitesmoke;
           border-radius: 5px;
           padding: 0.7rem;
+          position: relative;
 
-          &:nth-child(2){
+          &:nth-child(2) {
             min-width: 230px !important;
 
+            position: relative;
+            .date {
+              position: absolute;
+              top: 55px;
+              left: 0;
+            }
           }
 
           .headerSearchInput {
@@ -97,10 +104,10 @@
 .header.listMode {
   margin-bottom: 3rem;
   height: 27vh;
-    background-position:top;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(103, 71, 54)),
+  background-position: top;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(103, 71, 54)),
     url("https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   .headerContainer {
     .headerCont {
@@ -109,7 +116,7 @@
 
       .headerTitle {
         color: white;
-        font-size: 45px;
+        font-size: 42px;
       }
     }
   }
@@ -148,16 +155,10 @@
   min-width: 50px;
 }
 
-.date {
-  position: absolute;
-  top: 50px;
-  z-index: 2;
-}
-
 .options {
   z-index: 2;
   position: absolute;
-  top: 50px;
+  top: 3rem;
   background-color: white;
   color: gray;
   border-radius: 5px;
@@ -193,20 +194,73 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 576px) {
-  
-.header.listMode {
-  .headerContainer {
-    .headerCont {
-
-      .headerTitle {
-        font-size: 35px;
+@media (max-width: 1199.98px) {
+  .header.listMode {
+    .headerContainer {
+      .headerCont {
+        .headerTitle {
+          font-size: 36px;
+        }
       }
     }
   }
 }
+
+@media (min-width: 575.98px) and (max-width: 991.98px) {
+  .header.listMode {
+    .headerContainer {
+      .headerCont {
+        .headerTitle {
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
   .header {
     margin-bottom: 14rem;
+    // height: 80vh;
+  }
+  .headerSearch {
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    z-index: 500 !important;
+    top: 33rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    flex-direction: column;
+    .headerSearchItem {
+      width: 100%;
+      margin: 3px;
+    }
+
+    .headerSearchButton {
+      margin-top: 0.5rem;
+      width: 100%;
+      // background-color: red;
+      .headerBtn2 {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header.listMode {
+    .headerContainer {
+      .headerCont {
+        .headerTitle {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  .header {
+    margin-bottom: 16rem;
     height: 50vh;
 
     .headerContainer {
@@ -231,6 +285,7 @@
         .headerSearch {
           border-radius: 10px;
           padding: 1rem 1.5rem;
+          z-index: 500 !important;
           top: 25rem;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -238,7 +293,7 @@
           flex-direction: column;
           .headerSearchItem {
             width: 100%;
-            margin: 7px;
+            margin:1px;
           }
 
           .headerSearchButton {

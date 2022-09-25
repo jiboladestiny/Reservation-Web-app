@@ -4,7 +4,7 @@ import { createContext, useReducer } from "react";
 const date = new Date();
 
 // Add ten days to specified date
-date.setDate(date.getDate() + 10);
+date.setDate(date.getDate() + 2);
 
 const INITIAL_STATE = {
   city: undefined,

@@ -1,35 +1,28 @@
 import "./hotel.scss";
-import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
-  faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 import ImageGallery from "react-image-gallery";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [slideNumber, setSlideNumber] = useState(0);
-  const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { images, data, loading, error, reFetch } = useFetch(
+  const { images, data, loading} = useFetch(
     `/hotels/find/${id}`
   );
-
-   console.log(data)
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -45,38 +38,45 @@ const Hotel = () => {
 
   const days = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
 
-  const handleOpen = (i) => {
-    setSlideNumber(i);
-    setOpen(true);
+  const notify = () => {
+    toast.warning("Not authenticated, Redirecting to login page");
   };
 
-  const handleMove = (direction) => {
-    let newSlideNumber;
-
-    if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
-    } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
-    }
-
-    setSlideNumber(newSlideNumber);
-  };
+  const delay = () =>{
+  navigate("/login")
+  }
 
   const handleClick = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/login");
+      notify();
+          setTimeout(delay, 3000);
+
     }
-    // console.log("clikced")
   };
   return (
     <div>
+      <ToastContainer autoClose={3000} />
+
       <Header type="list" />
 
       <div className="hotelContainer container">
         {loading ? (
-          "loading"
+          <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         ) : (
           <div className="hotelWrapper">
             <h1 className="hotelTitle">{data.name}</h1>
@@ -117,6 +117,8 @@ const Hotel = () => {
                     <button onClick={handleClick}>Reserve or Book Now!</button>
                   </div>
                 </div>
+
+                <p className="hotelInfo">Rooms reservation are 2 night by defualt, you can change it when you explore or search</p>
               </div>
             </div>
           </div>

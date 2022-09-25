@@ -1,12 +1,4 @@
-import {
-  faBed,
-  faCalendarDays,
-  faCar,
-  faPerson,
-  faPlane,
-  faTaxi,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./header.scss";
 import { DateRange } from "react-date-range";
 import { useContext, useState } from "react";
@@ -87,10 +79,8 @@ const Header = ({ type }) => {
                       <button
                         className="headerBtn"
                         onClick={() => {
-                          const section = document.querySelector("#list");
-                          section.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
+                          navigate("/hotels", {
+                            state: { destination, dates, options },
                           });
                         }}
                       >

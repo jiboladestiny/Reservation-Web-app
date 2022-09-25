@@ -3,7 +3,7 @@ import "./propertyList.scss";
 import { useNavigate } from "react-router-dom";
 
 const PropertyList = () => {
-  const { data, loading, error } = useFetch("/hotels/countByType");
+  const { data, loading } = useFetch("/hotels/countByType");
 const navigate = useNavigate();
 
   const images = [
@@ -28,8 +28,18 @@ const navigate = useNavigate();
     <div className="list container" id="list">
       <h1 className="homeTitle mb-3">Property by type</h1>
       <div className="pList row">
+        
         {loading ? (
-          "loading"
+          <div className="lds-roller mx-auto">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         ) : (
           <>
             {data &&
@@ -41,7 +51,6 @@ const navigate = useNavigate();
                       navigate("/hotels", {
                         state: { type: data[i]?.type },
                       });
-
                     }}
                     key={i}
                   >

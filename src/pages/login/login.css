@@ -30,3 +30,25 @@
   background-color: #0071c28c;
   cursor: not-allowed;
 }
+
+
+.login-mdb{
+  /* background-color: rgba(103, 71, 54, 0); */
+  overflow-y: auto;
+}
+
+.card-mdb{
+  border-radius: 1rem;
+}
+
+.img-mdb{
+  border-radius: 1rem 0 0 1rem;
+}
+
+.fa-cubes{
+  color: #ff6219;
+}
+
+.headersign{
+  letter-spacing: 1px;
+}

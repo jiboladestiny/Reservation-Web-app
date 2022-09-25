@@ -4,7 +4,7 @@ import Noresult from './image/Noresult.gif'
 const Empty = () => {
   return (
     <>
-        <img src={Noresult} alt="logo" />
+        <img src={Noresult} className="img-fluid" alt="logo" />
     </>
   )
 }
