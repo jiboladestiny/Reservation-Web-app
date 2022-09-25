@@ -20,8 +20,8 @@ const Hotel = () => {
   const id = location.pathname.split("/")[2];
   const [openModal, setOpenModal] = useState(false);
 
-  const { images, data, loading} = useFetch(
-    `/hotels/find/${id}`
+  const { images, data, loading } = useFetch(
+    `https://thankful-bass-waders.cyclic.app/api/hotels/find/${id}`
   );
 
   const { user } = useContext(AuthContext);

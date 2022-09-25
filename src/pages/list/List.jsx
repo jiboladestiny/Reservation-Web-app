@@ -55,7 +55,9 @@ const List = () => {
     );
   });
 
-  const { data, loading} = useFetch(`/hotels`);
+  const { data, loading } = useFetch(
+    `https://thankful-bass-waders.cyclic.app/api/hotels`
+  );
 
   const handleChange = (event) => {
     setSelected(event.target.value);

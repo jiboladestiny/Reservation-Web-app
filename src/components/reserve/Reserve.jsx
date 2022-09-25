@@ -12,7 +12,9 @@ import success from "./success-svgrepo-com.svg";
 const Reserve = ({ setOpen, hotelId }) => {
   const notify = () => toast.error("Reservation is empty !");
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading } = useFetch(`/hotels/room/${hotelId}`);
+  const { data, loading } = useFetch(
+    `https://thankful-bass-waders.cyclic.app/api/hotels/room/${hotelId}`
+  );
   const { dates } = useContext(SearchContext);
   const [modal, setModal] = useState(false);
   const [random, setRandom] = useState();

@@ -1,4 +1,3 @@
-
 import "./header.scss";
 import { DateRange } from "react-date-range";
 import { useContext, useState } from "react";
@@ -9,7 +8,7 @@ import { SearchContext } from "../../context/SearchContext";
 
 import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-
+import { ToastContainer, toast } from "react-toastify";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -39,24 +38,26 @@ const Header = ({ type }) => {
   };
 
   const { dispatch } = useContext(SearchContext);
-
+  const notify = () => {
+    toast.error("Destination is empty");
+  };
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-
-    console.log(dates);
-    navigate("/hotels", { state: { destination, dates, options } });
+    if (destination === "") {
+      notify()
+    } else {
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { destination, dates, options },
+      });
+      navigate("/hotels", { state: { destination, dates, options } });
+    }
   };
 
   return (
     <div className={type === "list" ? "header listMode" : "header"}>
-      <div
-        // className={
-        //   type === "list"
-        //     ? "headerContainer listMode container"
-        //     : "headerContainer container"
-        // }
-        className="headerContainer container"
-      >
+      <ToastContainer autoClose={1000} />
+
+      <div className="headerContainer container">
         <Navbar />
 
         <div className="headerCont">
