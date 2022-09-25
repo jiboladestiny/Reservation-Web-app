@@ -3,7 +3,9 @@ import "./propertyList.scss";
 import { useNavigate } from "react-router-dom";
 
 const PropertyList = () => {
-  const { data, loading } = useFetch("/hotels/countByType");
+  const { data, loading } = useFetch(
+    "https://thankful-bass-waders.cyclic.app/api/hotels/countByType"
+  );
 const navigate = useNavigate();
 
   const images = [

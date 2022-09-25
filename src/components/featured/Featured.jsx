@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./featured.scss";
 
 const Featured = () => {
-  const { data, loading} = useFetch(
-    "/hotels/countByCity?cities=berlin,madrid,london,paris"
+  const { data, loading } = useFetch(
+    "https://thankful-bass-waders.cyclic.app/api/hotels/countByCity?cities=berlin,madrid,london,paris"
   );
   const navigate = useNavigate();
   return (

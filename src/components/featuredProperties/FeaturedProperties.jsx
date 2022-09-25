@@ -3,7 +3,9 @@ import "./featuredProperties.css";
 import { useNavigate } from "react-router-dom";
 
 const FeaturedProperties = () => {
-  const { data, loading } = useFetch("/hotels?featured=true&limit=4");
+  const { data, loading } = useFetch(
+    "https://thankful-bass-waders.cyclic.app/api/hotels?featured=true&limit=4"
+  );
   const navigate = useNavigate();
 
   return (
