@@ -149,7 +149,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 class="bx ms-2 bx-copy"
               ></i>
             </p>
-            <div class="button-cont gap-2 d-flex justify-content-md-center">
+            <div class="button-cont d-flex justify-content-center">
               <button
                 onClick={() => {
                   navigate("/hotels", {
@@ -164,7 +164,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                     },
                   });
                 }}
-                class="btn explore btn-md btn-primary me-md-2"
+                class="btn explore btn-md me-2 btn-primary"
                 type="button"
               >
                 Explore

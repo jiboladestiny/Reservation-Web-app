@@ -1,3 +1,6 @@
+.list {
+  margin-bottom: 5rem;
+}
 .pListItem {
   /* flex:1; */
   border-radius: 10px;
@@ -51,6 +54,9 @@
       }
 
       i {
+        box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
         cursor: pointer;
         background: white;
         color: rgba(103, 71, 54, 1);

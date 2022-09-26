@@ -1,9 +1,14 @@
 footer{
   background-color: rgba(103,71,54) !important;
+  margin-top: 8rem;
 }
 
 footer ul li a,p {
 color: white !important;
+}
+
+.company-name{
+  color: white;
 }
 /* .footer{
   width: 100%;

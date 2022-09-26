@@ -6,6 +6,7 @@ const PropertyList = () => {
   const { data, loading } = useFetch(
     "https://thankful-bass-waders.cyclic.app/api/hotels/countByType"
   );
+  console.log(data)
 const navigate = useNavigate();
 
   const images = [
@@ -30,8 +31,7 @@ const navigate = useNavigate();
     <div className="list container" id="list">
       <h1 className="homeTitle mb-3">Property by type</h1>
       <div className="pList row">
-        
-        {loading ? (
+        {loading || data.length === 0 ? (
           <div className="lds-roller mx-auto">
             <div></div>
             <div></div>
@@ -44,37 +44,49 @@ const navigate = useNavigate();
           </div>
         ) : (
           <>
-            {data &&
-              images.map((img, i) => (
-                <div className="col">
-                  <div
-                    className="pListItem"
-                    onClick={() => {
-                      navigate("/hotels", {
-                        state: { type: data[i]?.type },
-                      });
-                    }}
-                    key={i}
-                  >
-                    <img src={img} alt="" className="pListImg" />
-                    <div className="pListTitles">
-                      <h1>{data[i]?.type}</h1>
-                      <h2>
-                        {data[i]?.count} {data[i]?.type}
-                      </h2>
-                    </div>
+            {images.map((img, i) => (
+              <div className="col">
+                <div
+                  className="pListItem"
+                  onClick={() => {
+                    navigate("/hotels", {
+                      state: { type: data[i]?.type },
+                    });
+                  }}
+                  key={i}
+                >
+                  <img src={img} alt="" className="pListImg" />
+                  <div className="pListTitles">
+                    <h1>{data[i]?.type}</h1>
+                    <h2>
+                      {data[i]?.count} {data[i]?.type}
+                    </h2>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </>
         )}
       </div>
       <div className="mobile">
         <div className="pListMobile">
-          <i class="right bx bx-chevrons-right" onClick={right}></i>
-          <i class="left bx bx-chevrons-left" onClick={left}></i>
-          {loading ? (
-            "loading"
+          {data.length !== 0 && (
+            <i class="right bx bx-chevrons-right" onClick={right}></i>
+          )}
+          {data.length !== 0 && (
+            <i class="left bx bx-chevrons-left" onClick={left}></i>
+          )}
+          {loading || data.length === 0 ? (
+            <div className="lds-roller mx-auto">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           ) : (
             <>
               {data &&

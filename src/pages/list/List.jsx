@@ -47,6 +47,7 @@ const List = () => {
   const [selected, setSelected] = useState(
     location.state?.type || type[0].value
   );
+  console.log(location.state?.type);
   const optionSelect = type.map((item) => {
     return (
       <option key={item.value} value={item.value}>

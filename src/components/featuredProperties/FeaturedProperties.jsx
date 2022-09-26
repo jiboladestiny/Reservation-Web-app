@@ -9,11 +9,11 @@ const FeaturedProperties = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="res container mt-5">
+    <div className="res container">
       <h1 className="homeTitle mb-4">Top Homes</h1>
-     
+
       <div className="fp row gy-4">
-        {loading ? (
+        {loading || data.length === 0 ? (
           <div className="lds-roller mx-auto">
             <div></div>
             <div></div>

@@ -62,7 +62,7 @@ const Hotel = () => {
       <Header type="list" />
 
       <div className="hotelContainer container">
-        {loading ? (
+        {loading || data.length === 0 ? (
           <div class="lds-spinner">
             <div></div>
             <div></div>
@@ -118,7 +118,10 @@ const Hotel = () => {
                   </div>
                 </div>
 
-                <p className="hotelInfo">Rooms reservation are 2 night by defualt, you can change it when you explore or search</p>
+                <p className="hotelInfo">
+                  Rooms reservation are 2 night by defualt, you can change it
+                  when you explore or search
+                </p>
               </div>
             </div>
           </div>

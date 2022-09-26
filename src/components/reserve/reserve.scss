@@ -14,9 +14,7 @@
 .rContainer {
   background-color: white;
   padding: 20px;
-  min-width: 400px;
-  max-width:90%;
-  width: auto;
+  width: 28rem;
   position: relative;
   border-radius: 10px;
 }
@@ -147,5 +145,12 @@
     span {
       color: gray;
     }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .rContainer {
+    width: 90%;
   }
 }

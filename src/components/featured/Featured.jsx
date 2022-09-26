@@ -9,10 +9,10 @@ const Featured = () => {
   );
   const navigate = useNavigate();
   return (
-    <div className="container mb-5">
+    <div className="container">
       <h1 className="homeTitle mb-3">Property by Cities</h1>
       <div className="featured row gy-3 gx-md-3 gx-3 justify-content-center">
-        {loading ? (
+        {loading || data.length === 0 ? (
           <div className="lds-roller">
             <div></div>
             <div></div>

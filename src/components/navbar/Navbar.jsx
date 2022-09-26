@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useState } from "react";
@@ -7,29 +7,18 @@ import { ToastContainer, toast } from "react-toastify";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
-  const [bearing, setBearing] = useState(false);
-  const location = useLocation();
-  const name = location.pathname.split("/")[1];
+ 
     const notify = () => {
       toast.warning("Logged out");
     };
 
-  const bear = () => {
-    if (name === "hotels") {
-      setBearing(110);
-    } else {
-      setBearing(444);
-    }
-  };
-
   const changeBackground = () => {
-    if (window.scrollY >= bearing) {
+    if (window.scrollY >= 10) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
   };
-  window.addEventListener("scroll", bear);
 
   window.addEventListener("scroll", changeBackground);
 

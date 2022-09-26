@@ -2340,6 +2340,11 @@
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
 
+"animate.css@^4.1.1":
+  "integrity" "sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ=="
+  "resolved" "https://registry.npmjs.org/animate.css/-/animate.css-4.1.1.tgz"
+  "version" "4.1.1"
+
 "ansi-escapes@^4.2.1", "ansi-escapes@^4.3.1":
   "integrity" "sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ=="
   "resolved" "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.2.tgz"
@@ -7302,6 +7307,15 @@
     "prop-types" "^15.5.10"
     "react-transition-group" "^4.4.1"
 
+"react-preloaders@^3.0.3":
+  "integrity" "sha512-kDqXpJBK+HLRHpYvVHWLMdQo2Y7sqdNBS19YKzLZD6spkAJbEPd256GrZqwNn6b+/MX+1dLHPMBczbFEX7lWRA=="
+  "resolved" "https://registry.npmjs.org/react-preloaders/-/react-preloaders-3.0.3.tgz"
+  "version" "3.0.3"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "react" "^16.8.6"
+    "styled-components" "^5.0.0-beta.0"
+
 "react-refresh@^0.11.0", "react-refresh@>=0.10.0 <1.0.0":
   "integrity" "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
@@ -7400,6 +7414,15 @@
   "version" "18.0.0"
   dependencies:
     "loose-envify" "^1.1.0"
+
+"react@^16.8.6":
+  "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
+  "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
 
 "readable-stream@^2.0.1":
   "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
@@ -8173,7 +8196,7 @@
   "resolved" "https://registry.npmjs.org/style-loader/-/style-loader-3.3.1.tgz"
   "version" "3.3.1"
 
-"styled-components@^5.3.5", "styled-components@>= 2":
+"styled-components@^5.0.0-beta.0", "styled-components@^5.3.5", "styled-components@>= 2":
   "integrity" "sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.5.tgz"
   "version" "5.3.5"
