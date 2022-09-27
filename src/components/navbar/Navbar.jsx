@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useState } from "react";
@@ -7,10 +7,10 @@ import { ToastContainer, toast } from "react-toastify";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
- 
-    const notify = () => {
-      toast.success("Logged out");
-    };
+
+  const notify = () => {
+    toast.success("Logged out");
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -65,7 +65,10 @@ const Navbar = () => {
                 localStorage.setItem("user", null);
               }}
             >
-              <a href="##" className="nav-link btn px-2 btn-md d-flex align-items-center">
+              <a
+                href="##"
+                className="nav-link btn px-2 btn-md d-flex align-items-center"
+              >
                 <i class="bx bx-power-off me-1"></i> {user.username}
               </a>
             </li>

@@ -28,6 +28,7 @@ const Featured = () => {
             <div className="col-md-6 col-lg-3 col-6">
               <div
                 className="featuredItem"
+    
                 onClick={() => {
                   navigate("/hotels", {
                     state: { destination: "berlin" },

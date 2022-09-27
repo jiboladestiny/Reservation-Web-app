@@ -17,7 +17,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     `https://thankful-bass-waders.cyclic.app/api/hotels/room/${hotelId}`
   );
   const { dates } = useContext(SearchContext);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const [random, setRandom] = useState();
   const [copy, setCopy] = useState(false);
   useEffect(() => {
