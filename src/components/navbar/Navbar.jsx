@@ -9,7 +9,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
  
     const notify = () => {
-      toast.warning("Logged out");
+      toast.success("Logged out");
     };
 
   const changeBackground = () => {

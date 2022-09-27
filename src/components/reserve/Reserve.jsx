@@ -11,16 +11,18 @@ import "react-toastify/dist/ReactToastify.css";
 import success from "./success-svgrepo-com.svg";
 const Reserve = ({ setOpen, hotelId }) => {
   const notify = () => toast.error("Reservation is empty !");
+  const copied = () => toast.success("Copied to clipboard");
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading } = useFetch(
     `https://thankful-bass-waders.cyclic.app/api/hotels/room/${hotelId}`
   );
   const { dates } = useContext(SearchContext);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const [random, setRandom] = useState();
-  useEffect(()=>{
-    setRandom( Math.random().toString(36).substring(2, 12))
-  },[modal])
+  const [copy, setCopy] = useState(false);
+  useEffect(() => {
+    setRandom(Math.random().toString(36).substring(2, 12));
+  }, [modal]);
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -79,8 +81,6 @@ const Reserve = ({ setOpen, hotelId }) => {
       notify();
     }
   };
-
-
 
   return (
     <div className="reserve">
@@ -145,9 +145,15 @@ const Reserve = ({ setOpen, hotelId }) => {
               <i
                 onClick={() => {
                   navigator.clipboard.writeText(random);
+                  setCopy(true);
+                  setTimeout(() =>{
+                    setCopy(false)
+                  }, 1000);
                 }}
-                class="bx ms-2 bx-copy"
-              ></i>
+                className="bx ms-2 bx-copy tooltips"
+              >
+                {copy && <span className="tooltiptext">Copied</span>}
+              </i>
             </p>
             <div class="button-cont d-flex justify-content-center">
               <button

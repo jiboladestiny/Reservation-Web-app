@@ -23,7 +23,9 @@ const SearchItem = ({ item }) => {
               <h6>Per night</h6>
             </div>
             <div className="right">
-            <button>Book Now</button>
+              <Link to={`/hotels/${item._id}`}>
+                <button>Book Now</button>
+              </Link>
             </div>
           </div>
         </div>

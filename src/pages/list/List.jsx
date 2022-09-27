@@ -2,7 +2,7 @@ import "./list.scss";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
@@ -34,6 +34,14 @@ const List = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(999);
   const [filter, setFilter] = useState(false);
+  const inner = window.innerWidth
+  useEffect(()=>{
+    if (inner >= 992) {
+      setFilter(true);
+    } else{
+      setFilter(false)
+    }
+  },[inner])
   const type = [
     { value: " ", text: "All" },
     { value: "hotel", text: "Hotel" },
@@ -256,7 +264,9 @@ const List = () => {
               {minmax.length === 0 && !loading && <Empty />}
               {loading ? (
                 // "loading"
-                <div className="loader"></div>
+                <div className="d-flex justify-content-center">
+                  <div class="lds-dual-ring"></div>
+                </div>
               ) : (
                 <div className="row gy-4">
                   {minmax?.map((item) => (
