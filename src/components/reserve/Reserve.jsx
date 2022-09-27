@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import success from "./success-svgrepo-com.svg";
 const Reserve = ({ setOpen, hotelId }) => {
   const notify = () => toast.error("Reservation is empty !");
-  const copied = () => toast.success("Copied to clipboard");
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading } = useFetch(
     `https://thankful-bass-waders.cyclic.app/api/hotels/room/${hotelId}`
