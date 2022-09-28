@@ -7,7 +7,7 @@
   background-position: bottom;
   height: 75vh;
   margin-bottom: 5rem;
-
+  position: relative;
   .headerContainer {
     .headerCont {
       height: 75vh;
@@ -225,25 +225,24 @@
       }
     }
   }
-}
 
-@media (max-width: 991.98px) {
   .header {
-    margin-bottom: 14rem;
+    margin-bottom: 8rem;
     // height: 80vh;
   }
   .headerSearch {
+    display: none !important;
     border-radius: 10px;
     padding: 1rem 1.5rem;
     z-index: 200 !important;
     top: 33rem;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
+    width: 65%;
     flex-direction: column;
     .headerSearchItem {
       width: 100%;
-      margin: 30px;
+      margin: 2px;
       &:nth-child(2) {
         .date {
           left: 50%;
@@ -255,13 +254,52 @@
     .headerSearchButton {
       margin-top: 0.5rem;
       width: 100%;
-      // background-color: red;
       .headerBtn2 {
         width: 100%;
         border-radius: 8px;
       }
     }
   }
+
+
+}
+
+@media (max-width: 991.98px) {
+  // .header {
+  //   margin-bottom: 14rem;
+  //   // height: 80vh;
+  // }
+  // .headerSearch {
+  //   display: none;
+  //   border-radius: 10px;
+  //   padding: 1rem 1.5rem;
+  //   z-index: 200 !important;
+  //   top: 33rem;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   width: 65%;
+  //   flex-direction: column;
+  //   .headerSearchItem {
+  //     width: 100%;
+  //     margin: 2px;
+  //     &:nth-child(2) {
+  //       .date {
+  //         left: 50%;
+  //         transform: translate(-10%, 0%);
+  //       }
+  //     }
+  //   }
+
+  //   .headerSearchButton {
+  //     margin-top: 0.5rem;
+  //     width: 100%;
+  //     // background-color: red;
+  //     .headerBtn2 {
+  //       width: 100%;
+  //       border-radius: 8px;
+  //     }
+  //   }
+  // }
 }
 
 @media (max-width: 576px) {
@@ -309,7 +347,7 @@
           top: 25rem;
           left: 50%;
           transform: translate(-50%, -60%);
-          width: 80%;
+          width: 85%;
           flex-direction: column;
           .headerSearchItem {
             width: 100%;
