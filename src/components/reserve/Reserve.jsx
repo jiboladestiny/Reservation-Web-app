@@ -6,11 +6,10 @@ import { useContext, useState, useEffect } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import success from "./success-svgrepo-com.svg";
 const Reserve = ({ setOpen, hotelId }) => {
-  const notify = () => toast.error("Reservation is empty !");
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading } = useFetch(
     `https://thankful-bass-waders.cyclic.app/api/hotels/room/${hotelId}`
