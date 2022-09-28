@@ -8,7 +8,6 @@ import { SearchContext } from "../../context/SearchContext";
 
 import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { ToastContainer, toast } from "react-toastify";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -55,7 +54,6 @@ const Header = ({ type }) => {
 
   return (
     <div className={type === "list" ? "header listMode" : "header"}>
-      <ToastContainer autoClose={500} />
 
       <div className="headerContainer container">
         <Navbar />
