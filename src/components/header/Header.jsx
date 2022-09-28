@@ -38,19 +38,19 @@ const Header = ({ type }) => {
   };
 
   const { dispatch } = useContext(SearchContext);
-  const notify = () => {
-    toast.error("Destination is empty");
-  };
+  // const notify = () => {
+  //   toast.error("Destination is empty");
+  // };
   const handleSearch = () => {
-    if (destination === "") {
-      notify()
-    } else {
+    // if (destination === "") {
+    //   notify();
+    // } else {
       dispatch({
         type: "NEW_SEARCH",
         payload: { destination, dates, options },
       });
       navigate("/hotels", { state: { destination, dates, options } });
-    }
+    // }
   };
 
   return (
@@ -195,7 +195,13 @@ const Header = ({ type }) => {
                     )}
                   </div>
                   <div className="headerSearchButton">
-                    <button className="headerBtn2" onClick={handleSearch}>
+                    <button
+                      className={
+                        destination === "" ? "headerBtn2 active" : "headerBtn2"
+                      }
+                      onClick={handleSearch}
+                      disabled={destination === ""}
+                    >
                       Search
                     </button>
                   </div>

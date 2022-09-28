@@ -82,7 +82,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   return (
     <div className="reserve">
-      <ToastContainer />
+      <ToastContainer autoClose={500} />
       <div className="rContainer">
         {modal === false && (
           <FontAwesomeIcon
@@ -129,7 +129,9 @@ const Reserve = ({ setOpen, hotelId }) => {
 
             <button
               onClick={handleClick}
-              className={selectedRooms.length === 0 ? "rButton active" : "rButton"}
+              className={
+                selectedRooms.length === 0 ? "rButton active" : "rButton"
+              }
               disabled={selectedRooms.length === 0}
             >
               Reserve Now!

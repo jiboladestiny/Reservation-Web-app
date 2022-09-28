@@ -101,8 +101,8 @@
   }
 }
 
-.headerBtn2.active{
-  background-color: rgba(103, 71, 54,0.5) !important;
+.headerBtn2.active {
+  background-color: rgba(103, 71, 54, 0.7) !important;
 }
 
 .header.listMode {
@@ -260,8 +260,6 @@
       }
     }
   }
-
-
 }
 
 @media (max-width: 991.98px) {
@@ -313,7 +311,7 @@
     }
   }
   .header {
-    margin-bottom: 13rem;
+    margin-bottom: 14rem;
     height: 50vh;
 
     .headerContainer {
@@ -352,6 +350,13 @@
           .headerSearchItem {
             width: 100%;
             margin: 3px;
+
+            &:nth-child(2) {
+              .date {
+                left: 50%;
+                transform: translate(-50%, 0%);
+              }
+            }
           }
 
           .headerSearchButton {
@@ -368,12 +373,7 @@
     }
   }
 }
-@media (max-width: 375px) {
-  .headerSearch {
-    top: 50rem;
-  }
 
-}
 @media (max-width: 370px) {
   .header {
     height: 55vh !important;
@@ -393,9 +393,8 @@
   }
 }
 
-
 @media (max-width: 450px) {
-  .headerSearch{
+  .headerSearch {
     top: 28rem;
   }
 }
