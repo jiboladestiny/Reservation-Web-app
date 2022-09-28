@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: "phillip",
-    password: 12345678,
+    username:"phillip",
+    password:"12345678",
   });
   const { loading, error, dispatch } = useContext(AuthContext);
 
@@ -82,6 +82,7 @@ const Login = () => {
                           Username(case-sensitive)
                         </label>
                         <input
+                          value={credentials.username}
                           type="text"
                           class="form-control form-control-lg"
                           id="username"
@@ -95,6 +96,7 @@ const Login = () => {
                           Password
                         </label>
                         <input
+                        value={credentials.password}
                           type="password"
                           class="form-control form-control-lg"
                           id="password"
@@ -121,7 +123,7 @@ const Login = () => {
                           Login
                         </button>
                       </div>
-                   
+
                       <br />
                       <a href="#!" className="small text-muted">
                         Terms of use.
