@@ -8,7 +8,7 @@ import { SearchContext } from "../../context/SearchContext";
 
 import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { ToastContainer, toast } from "react-toastify";
+
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -38,25 +38,19 @@ const Header = ({ type }) => {
   };
 
   const { dispatch } = useContext(SearchContext);
-  const notify = () => {
-    toast.error("Destination is empty");
-  };
+
   const handleSearch = () => {
-    if (destination === "") {
-      notify()
-    } else {
+  
       dispatch({
         type: "NEW_SEARCH",
         payload: { destination, dates, options },
       });
       navigate("/hotels", { state: { destination, dates, options } });
-    }
+  
   };
 
   return (
     <div className={type === "list" ? "header listMode" : "header"}>
-      <ToastContainer autoClose={1000} />
-
       <div className="headerContainer container">
         <Navbar />
 
@@ -195,7 +189,13 @@ const Header = ({ type }) => {
                     )}
                   </div>
                   <div className="headerSearchButton">
-                    <button className="headerBtn2" onClick={handleSearch}>
+                    <button
+                      className={
+                        destination === "" ? "headerBtn2 active" : "headerBtn2"
+                      }
+                      onClick={handleSearch}
+                      disabled={destination === ""}
+                    >
                       Search
                     </button>
                   </div>

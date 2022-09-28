@@ -2,7 +2,7 @@ import "./list.scss";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { useLocation } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
@@ -34,14 +34,14 @@ const List = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(999);
   const [filter, setFilter] = useState(false);
-  const inner = window.innerWidth
-  useEffect(()=>{
+  let inner = window.innerWidth;
+  useEffect(() => {
     if (inner >= 992) {
       setFilter(true);
-    } else{
-      setFilter(false)
+    } else {
+      setFilter(false);
     }
-  },[inner])
+  }, [inner]);
   const type = [
     { value: " ", text: "All" },
     { value: "hotel", text: "Hotel" },
@@ -70,7 +70,7 @@ const List = () => {
   const handleChange = (event) => {
     setSelected(event.target.value);
   };
- 
+
   const datas = data.filter((item) => {
     if (destination === " ") {
       return item;
@@ -94,9 +94,6 @@ const List = () => {
   const minmax = rateoption.filter((item) => {
     return item.cheapestPrice >= min && item.cheapestPrice <= max;
   });
-
-
-
 
   return (
     <div>

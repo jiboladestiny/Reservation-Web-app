@@ -62,7 +62,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    if (selectedRooms.length !== 0) {
+    // if (selectedRooms.length !== 0) {
       try {
         await Promise.all(
           selectedRooms.map((roomId) => {
@@ -76,9 +76,9 @@ const Reserve = ({ setOpen, hotelId }) => {
         // setOpen(false);
         // navigate("/");
       } catch (err) {}
-    } else {
-      notify();
-    }
+    // } else {
+    //   notify();
+    // }
   };
 
   return (
@@ -128,7 +128,11 @@ const Reserve = ({ setOpen, hotelId }) => {
               ))
             )}
 
-            <button onClick={handleClick} className="rButton">
+            <button
+              onClick={handleClick}
+              className={selectedRooms.length === 0 ? "rButton active" : "rButton"}
+              disabled={selectedRooms.length === 0}
+            >
               Reserve Now!
             </button>
           </div>
@@ -145,8 +149,8 @@ const Reserve = ({ setOpen, hotelId }) => {
                 onClick={() => {
                   navigator.clipboard.writeText(random);
                   setCopy(true);
-                  setTimeout(() =>{
-                    setCopy(false)
+                  setTimeout(() => {
+                    setCopy(false);
                   }, 1000);
                 }}
                 className="bx ms-2 bx-copy tooltips"

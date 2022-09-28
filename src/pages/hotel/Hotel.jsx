@@ -51,7 +51,7 @@ const Hotel = () => {
       setOpenModal(true);
     } else {
       notify();
-          setTimeout(delay, 3000);
+         setTimeout(delay, 1500);
 
     }
   };

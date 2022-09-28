@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
+    username: "phillip",
+    password: 12345678,
   });
   const { loading, error, dispatch } = useContext(AuthContext);
 
@@ -79,7 +79,7 @@ const Login = () => {
 
                       <div class="mb-3">
                         <label for="username" class="form-label">
-                          Email address/username
+                          Username(case-sensitive)
                         </label>
                         <input
                           type="text"
