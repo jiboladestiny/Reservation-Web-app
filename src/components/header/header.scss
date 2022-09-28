@@ -330,6 +330,12 @@
     }
   }
 }
+@media (max-width: 375px) {
+  .headerSearch {
+    top: 50rem;
+  }
+
+}
 @media (max-width: 370px) {
   .header {
     height: 55vh !important;
@@ -346,5 +352,12 @@
         height: 35vh !important;
       }
     }
+  }
+}
+
+
+@media (max-width: 450px) {
+  .headerSearch{
+    top: 28rem;
   }
 }
