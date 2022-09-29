@@ -9,7 +9,9 @@ import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
 import Empty from "./Empty";
 
+
 const List = () => {
+    
   const location = useLocation();
   const [destination, setDestination] = useState(
     location.state?.destination || ""
@@ -107,6 +109,11 @@ const List = () => {
         <div className="listWrapper row gy-5">
           <div className="col-lg-3 col-md-12">
             <div className="listSearch">
+            <button onClick={()=>{
+              setDestination("");
+              setSelected(type[0].value);
+              setActive(null)
+            }} className="clear btn btn-sm">clear filter</button>
               <i
                 className="bx bx-filter"
                 data-bs-toggle="tooltip"

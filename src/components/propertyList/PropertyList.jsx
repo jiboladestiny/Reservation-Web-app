@@ -91,7 +91,15 @@ const navigate = useNavigate();
             <>
               {data &&
                 images.map((img, i) => (
-                  <div className="pListItemMobile me-3" key={i}>
+                  <div
+                    className="pListItemMobile me-3"
+                    onClick={() => {
+                      navigate("/hotels", {
+                        state: { type: data[i]?.type },
+                      });
+                    }}
+                    key={i}
+                  >
                     <img src={img} alt="" className="pListImg" />
 
                     <div className="pListTitles">

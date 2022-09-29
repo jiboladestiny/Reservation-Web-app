@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
-
+import React from 'react'
+import Rating from "@mui/material/Rating";
+import Box from "@mui/material/Box";
+import StarIcon from "@mui/icons-material/Star";
 import "./searchItem.scss";
 
 const SearchItem = ({ item }) => {
+  const [value, setValue] = React.useState(item.rating);
+  const [hover, setHover] = React.useState(-1);
+
+  const labels = {
+    1: "Useless+",
+    2: "Poor+",
+    3: "Good",
+    4: "Impressive",
+    5: "Excellent+",
+  };
+  function getLabelText(value) {
+    return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
+  }
   return (
     <div className="col-md-12 col-sm-6">
       <div className="searchItem">
@@ -44,9 +60,13 @@ const SearchItem = ({ item }) => {
         </div>
         <div className="siDetails">
           {item.rating && (
-            <div className="siRating">
-              <span>Excellent</span>
-              <button>{item.rating}</button>
+            <div className="rating-cont">
+              <Rating
+                name="half-rating-read"
+                defaultValue={item.rating}
+                precision={0.5}
+                readOnly
+              />
             </div>
           )}
           <div className="siDetailTexts">

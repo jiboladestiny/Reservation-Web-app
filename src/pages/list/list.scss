@@ -20,21 +20,21 @@
   height: max-content;
 
   i {
-      display: block;
-      position: absolute;
-      top: 0.5rem;
-      right: 1rem;
-      font-size: 30px;
-      background-color: white;
-      border-radius: 5px;
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 5px;
 
-      &:hover {
-        background-color: black;
-        color: white;
-        transition: all 2s;
-        cursor: pointer;
-      }
+    &:hover {
+      background-color: black;
+      color: white;
+      transition: all 2s;
+      cursor: pointer;
     }
+  }
 
   .lsTitle {
     font-size: 20px;
@@ -249,4 +249,14 @@
     z-index: 50 !important;
     top: 4.2rem;
   }
+}
+
+.clear {
+  position: absolute;
+  bottom: -2.55rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6rem !important;
+  padding: 0.5rem 0.5rem !important;
+  background-color: rgb(255, 0, 0, 0.5) !important;
 }
