@@ -345,6 +345,12 @@
   }
 }
 
+@media (min-height: 800px) {
+  .headerSearch {
+    top: 26rem !important;
+  } 
+}
+
 @media (max-width: 374px) {
   .header {
     height: 55vh !important;
