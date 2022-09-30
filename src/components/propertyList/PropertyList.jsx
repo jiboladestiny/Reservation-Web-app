@@ -71,10 +71,14 @@ const navigate = useNavigate();
       <div className="mobile">
         <div className="pListMobile">
           {data.length !== 0 && (
-            <i class="right bx bx-chevrons-right" onClick={right}></i>
+            <div className="flasher right">
+              <i class="bx bx-chevrons-right bx-flashing" onClick={right}></i>
+            </div>
           )}
           {data.length !== 0 && (
-            <i class="left bx bx-chevrons-left" onClick={left}></i>
+            <div className="flasher left">
+              <i class="bx bx-chevrons-left bx-flashing" onClick={left}></i>
+            </div>
           )}
           {loading || data.length === 0 ? (
             <div className="lds-roller mx-auto">

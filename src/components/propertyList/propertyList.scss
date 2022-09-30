@@ -67,25 +67,31 @@
         display: none !important;
       }
 
-      i {
-        box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
-        -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
-        cursor: pointer;
-        background: white;
-        color: rgba(103, 71, 54, 1);
-        border-radius: 0.5rem;
-        font-size: 1.8rem;
+      .flasher {
         position: absolute;
         top: 50%;
         transform: translate(-50%, -120%);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem;
+        background: white;
+        i {
+          // box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+          // -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+          // -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+
+          color: rgba(103, 71, 54, 1);
+
+          font-size: 1.8rem;
+        }
       }
 
       .right {
         right: -0.5rem;
       }
       .left {
-        left: 1rem;
+        left: 1.7rem;
       }
 
       .pListItemMobile {
