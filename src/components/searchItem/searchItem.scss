@@ -182,8 +182,19 @@
   }
 }
 
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
+  .siCancelOpSubtitle {
+    display: none;
+  }
 
-.rating-cont{
-  display: flex;
-  justify-content: end;
+  .siCheckButton {
+    padding: 0.5rem;
+    font-size: 14px;
+    width: 9em;
+  }
 }
+
+// .rating-cont{
+//   display: flex;
+//   justify-content: end;
+// }

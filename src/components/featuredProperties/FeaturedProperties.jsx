@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/useFetch";
-import "./featuredProperties.css";
+import "./featuredProperties.scss";
 import FeaturedItem from "./FeaturedItem";
 
 const FeaturedProperties = () => {

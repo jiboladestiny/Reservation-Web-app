@@ -216,11 +216,15 @@
 }
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
+  .clear {
+    bottom: -3.3rem !important;
+  }
   .listSearch {
     // height: 190px;
     overflow-y: hidden;
     position: relative;
+    margin-bottom: 5rem;
 
     i {
       display: block;
@@ -253,10 +257,14 @@
 
 .clear {
   position: absolute;
-  bottom: -2.55rem;
+  bottom: -2.7rem;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 6rem !important;
   padding: 0.5rem 0.5rem !important;
   background-color: rgb(255, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
 }
+
+
+

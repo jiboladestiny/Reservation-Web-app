@@ -28,6 +28,12 @@
     line-height: 25px;
   }
 
+  @media (max-width: 767.98px) { 
+    .hotelPriceHighlight{
+      margin-bottom: 1rem;
+    }
+   }
+
   .hotelImages {
     .hotelImg {
       width: 100%;

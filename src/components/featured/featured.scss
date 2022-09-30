@@ -1,54 +1,62 @@
-.featured{
+.featured {
   z-index: 0 !important;
   margin-bottom: 6rem;
 }
 
-.featuredItem{
+.featuredItem {
   position: relative;
   color: white;
   border-radius: 10px;
   overflow: hidden;
   height: 250px;
-  flex:1;
-  cursor:pointer;
+  flex: 1;
+  cursor: pointer;
+
+    box-shadow: 0px 0px 28px 0px rgb(211, 211, 211, 0.5);
+  -webkit-box-shadow: 0px 0px 28px 0px rgb(211, 211, 211, 0.5);
+  -moz-box-shadow: 0px 0px 28px 0px rgb(211, 211, 211, 0.5);
+  &:hover {
+    transition: all ease-in 0.5s;
+    box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.4);
+  }
 }
 
-.featuredImg{
+.featuredImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.featuredTitles{
+.featuredTitles {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color:rgb(0, 0, 0,0.3);
+  background-color: rgb(0, 0, 0, 0.3);
   border-radius: 5px;
   padding: 5px;
 }
 
-
-.featuredTitles h1{
+.featuredTitles h1 {
   font-size: 25px;
   /* line-height: 10px; */
 }
-.featuredTitles h2{
+.featuredTitles h2 {
   font-size: 20px;
   /* line-height: 10px; */
 }
 
-
 @media (max-width: 576px) {
-  .featured{
-    .featuredItem{
+  .featured {
+    .featuredItem {
       height: 180px;
 
-      .featuredTitles{
-        h1{
+      .featuredTitles {
+        h1 {
           font-size: 22px;
         }
-        h2{
+        h2 {
           font-size: 17px;
         }
       }
@@ -140,10 +148,6 @@
     transform: rotate(360deg);
   }
 }
-
-
-
-
 
 // roller
 .lds-spinner {

@@ -96,7 +96,7 @@ const Hotel = () => {
           </div>
         ) : (
           <div className="hotelWrapper">
-            <div className="d-flex justify-content-between">
+            <div className="d-md-flex d-block justify-content-md-between">
               <div>
                 <h1 className="hotelTitle">{data.name}</h1>
                 <div className="hotelAddress">
@@ -142,7 +142,7 @@ const Hotel = () => {
               </div>
             </div>
 
-            <div className="row mt-5">
+            <div className="row mt-5 gy-5">
               <div className="col-lg-8">
                 <ImageGallery items={images} />
 

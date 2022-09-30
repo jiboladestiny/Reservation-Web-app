@@ -108,159 +108,166 @@ const List = () => {
         </div>
         <div className="listWrapper row gy-5">
           <div className="col-lg-3 col-md-12">
-            <div className="listSearch">
-            <button onClick={()=>{
-              setDestination("");
-              setSelected(type[0].value);
-              setActive(null)
-            }} className="clear btn btn-sm">clear filter</button>
-              <i
-                className="bx bx-filter"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Filter"
+            <div className="position-relative">
+              <button
                 onClick={() => {
-                  setFilter(!filter);
+                  setDestination("");
+                  setSelected(type[0].value);
+                  setActive(null);
                 }}
-              ></i>
-              <h1 className="lsTitle">Search</h1>
-              <div className="lsItem">
-                <label>Destination</label>
-                <input
-                  placeholder="Type preffered destination"
-                  value={destination}
-                  onChange={(e) => {
-                    setDestination(e.target.value);
+                className="clear btn btn-sm"
+              >
+                clear filter
+              </button>
+              <div className="listSearch">
+                <i
+                  className="bx bx-filter"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Filter"
+                  onClick={() => {
+                    setFilter(!filter);
                   }}
-                  type="text"
-                />
-              </div>
-              <div className="lsItem">
-                <label>Type</label>
-                <select
-                  value={selected}
-                  onChange={handleChange}
-                  className="form-select"
-                  aria-label="Default select example"
-                >
-                  {optionSelect}
-                </select>
-              </div>
-              {filter && (
+                ></i>
+                <h1 className="lsTitle">Search</h1>
                 <div className="lsItem">
-                  <label>Ratings</label>
-                  <div className="rating-cont">
-                    {ratingdata.map((item, i) => {
-                      return (
-                        <button
-                          key={i}
-                          onClick={() => {
-                            setActive(item);
-                          }}
-                          className={`btn btn-sm rating-btn me-2 ${
-                            active === item && "active"
-                          }`}
-                        >
-                          {item}
-                        </button>
-                      );
-                    })}
-                    <button
-                      className="btn btn-sm cancel-btn"
-                      onClick={() => {
-                        setActive(null);
-                      }}
-                    >
-                      X
-                    </button>
-                  </div>
+                  <label>Destination</label>
+                  <input
+                    placeholder="Type preffered destination"
+                    value={destination}
+                    onChange={(e) => {
+                      setDestination(e.target.value);
+                    }}
+                    type="text"
+                  />
                 </div>
-              )}
-              {filter && (
-                <div className="lsItem lsOpt">
-                  <label>Check-in Date</label>
-                  {!dates && (
-                    <span onClick={() => setOpenDate(!openDate)}>
-                      Select duration
-                    </span>
-                  )}
-                  {dates && (
-                    <span onClick={() => setOpenDate(!openDate)}>
-                      {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                        dates[0].endDate,
-                        "MM/dd/yyyy"
-                      )}`}
-                    </span>
-                  )}
+                <div className="lsItem">
+                  <label>Type</label>
+                  <select
+                    value={selected}
+                    onChange={handleChange}
+                    className="form-select"
+                    aria-label="Default select example"
+                  >
+                    {optionSelect}
+                  </select>
+                </div>
+                {filter && (
+                  <div className="lsItem">
+                    <label>Ratings</label>
+                    <div className="rating-cont">
+                      {ratingdata.map((item, i) => {
+                        return (
+                          <button
+                            key={i}
+                            onClick={() => {
+                              setActive(item);
+                            }}
+                            className={`btn btn-sm rating-btn me-2 ${
+                              active === item && "active"
+                            }`}
+                          >
+                            {item}
+                          </button>
+                        );
+                      })}
+                      <button
+                        className="btn btn-sm cancel-btn"
+                        onClick={() => {
+                          setActive(null);
+                        }}
+                      >
+                        X
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {filter && (
+                  <div className="lsItem lsOpt">
+                    <label>Check-in Date</label>
+                    {!dates && (
+                      <span onClick={() => setOpenDate(!openDate)}>
+                        Select duration
+                      </span>
+                    )}
+                    {dates && (
+                      <span onClick={() => setOpenDate(!openDate)}>
+                        {`${format(
+                          dates[0].startDate,
+                          "MM/dd/yyyy"
+                        )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
+                      </span>
+                    )}
 
-                  {openDate && (
-                    <DateRange
-                      editableDateInputs={true}
-                      onChange={(item) => setDates([item.selection])}
-                      moveRangeOnFirstSelection={false}
-                      ranges={dates}
-                      className="date-list"
-                      minDate={new Date()}
-                    />
-                  )}
-                </div>
-              )}
-              {filter && (
-                <div className="lsItem">
-                  <label>Options</label>
-                  <div className="lsOptions">
-                    <div className="lsOptionItem">
-                      <span className="lsOptionText">
-                        Min price <small>per night</small>
-                      </span>
-                      <input
-                        type="number"
-                        value={min}
-                        onChange={(e) => setMin(e.target.value)}
-                        className="lsOptionInput"
+                    {openDate && (
+                      <DateRange
+                        editableDateInputs={true}
+                        onChange={(item) => setDates([item.selection])}
+                        moveRangeOnFirstSelection={false}
+                        ranges={dates}
+                        className="date-list"
+                        minDate={new Date()}
                       />
-                    </div>
-                    <div className="lsOptionItem">
-                      <span className="lsOptionText">
-                        Max price <small>per night</small>
-                      </span>
-                      <input
-                        type="number"
-                        value={max}
-                        onChange={(e) => setMax(e.target.value)}
-                        className="lsOptionInput"
-                      />
-                    </div>
-                    <div className="lsOptionItem">
-                      <span className="lsOptionText">Adult</span>
-                      <input
-                        type="number"
-                        min={1}
-                        className="lsOptionInput"
-                        placeholder={options?.adult}
-                      />
-                    </div>
-                    <div className="lsOptionItem">
-                      <span className="lsOptionText">Children</span>
-                      <input
-                        type="number"
-                        min={0}
-                        className="lsOptionInput"
-                        placeholder={options?.children}
-                      />
-                    </div>
-                    <div className="lsOptionItem">
-                      <span className="lsOptionText">Room</span>
-                      <input
-                        type="number"
-                        min={1}
-                        className="lsOptionInput"
-                        placeholder={options?.room}
-                      />
+                    )}
+                  </div>
+                )}
+                {filter && (
+                  <div className="lsItem">
+                    <label>Options</label>
+                    <div className="lsOptions">
+                      <div className="lsOptionItem">
+                        <span className="lsOptionText">
+                          Min price <small>per night</small>
+                        </span>
+                        <input
+                          type="number"
+                          value={min}
+                          onChange={(e) => setMin(e.target.value)}
+                          className="lsOptionInput"
+                        />
+                      </div>
+                      <div className="lsOptionItem">
+                        <span className="lsOptionText">
+                          Max price <small>per night</small>
+                        </span>
+                        <input
+                          type="number"
+                          value={max}
+                          onChange={(e) => setMax(e.target.value)}
+                          className="lsOptionInput"
+                        />
+                      </div>
+                      <div className="lsOptionItem">
+                        <span className="lsOptionText">Adult</span>
+                        <input
+                          type="number"
+                          min={1}
+                          className="lsOptionInput"
+                          placeholder={options?.adult}
+                        />
+                      </div>
+                      <div className="lsOptionItem">
+                        <span className="lsOptionText">Children</span>
+                        <input
+                          type="number"
+                          min={0}
+                          className="lsOptionInput"
+                          placeholder={options?.children}
+                        />
+                      </div>
+                      <div className="lsOptionItem">
+                        <span className="lsOptionText">Room</span>
+                        <input
+                          type="number"
+                          min={1}
+                          className="lsOptionInput"
+                          placeholder={options?.room}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
           <div className="col-md-12 col-lg-8">
