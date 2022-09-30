@@ -265,7 +265,7 @@
 @media (min-width: 991.98px) {
   .headerSearch {
     margin-top: 2rem;
-}
+  }
 }
 
 @media (max-width: 576px) {
@@ -315,6 +315,9 @@
           transform: translate(-50%, -60%);
           width: 85%;
           flex-direction: column;
+          box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.2);
           .headerSearchItem {
             width: 100%;
             margin: 3px;
@@ -342,7 +345,7 @@
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 374px) {
   .header {
     height: 55vh !important;
     margin-bottom: 5rem !important;

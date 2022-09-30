@@ -34,7 +34,7 @@ const Navbar = () => {
 
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Reserva
+          Resérva
         </Link>
         <button
           className="navbar-toggler d-none"
