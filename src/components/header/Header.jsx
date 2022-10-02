@@ -72,7 +72,7 @@ const Header = ({ type }) => {
                     <h1 className="headerTitle">Fresh, quite and peaceful</h1>
                     <p className="headerDesc">
                       Get rewarded for your travels – unlock instant savings of
-                      10% or more with a free Lamabooking account
+                      10% or more with a free booking account
                     </p>
                     <div className="col-md-12 button-cont">
                       <button
